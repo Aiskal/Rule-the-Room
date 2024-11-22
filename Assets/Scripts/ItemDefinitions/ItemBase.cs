@@ -18,6 +18,7 @@ public abstract class ItemBase
 
     public static UnityEvent OnItemUnlocked { get; set; } = new();
     public static UnityEvent OnItemUsed { get; set; } = new();
+    public static UnityEvent OnItemUnEquip { get; set; } = new();
 
 #endregion
 
