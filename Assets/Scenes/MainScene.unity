@@ -3960,8 +3960,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1480818370}
+  - component: {fileID: 1480818371}
   m_Layer: 0
-  m_Name: BlankZone
+  m_Name: TopZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3983,9 +3984,33 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 534.9057, y: -137.07185}
-  m_SizeDelta: {x: 1069.8114, y: 274.1437}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1069.8114, y: -162.07185}
+  m_SizeDelta: {x: 1069.8114, y: 324.1437}
+  m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &1480818371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480818369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 4
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 6
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 2
+  m_ConstraintCount: 1
 --- !u!1001 &1500297045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4101,8 +4126,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 534.9057, y: -571.2156}
-  m_SizeDelta: {x: 1069.8114, y: 534.1437}
+  m_AnchoredPosition: {x: 534.9057, y: -596.2156}
+  m_SizeDelta: {x: 1069.8114, y: 484.1437}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1502972799
 MonoBehaviour:
@@ -5010,7 +5035,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 534.9057, y: -267.07184}
+  m_AnchoredPosition: {x: 534.9057, y: -242.07185}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1910686453
