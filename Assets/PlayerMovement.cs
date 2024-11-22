@@ -30,11 +30,19 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         MovePlayerButton.OnMove += HandleMove;
+        MovePlayerButton.OnStop += StopMove;
     }
     private void HandleMove(bool isLeft)
     {
         horizontalInput = isLeft ? -1 : 1; 
     }
+
+    private void StopMove()
+    {
+        horizontalInput = 0; 
+    }
+
+    
         
     void movement()
     {
@@ -45,5 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         MovePlayerButton.OnMove -= HandleMove;
+        MovePlayerButton.OnStop -= StopMove;
+
     }
 }
