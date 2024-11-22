@@ -4,25 +4,40 @@ using UnityEngine;
 
 public class JumpController : MonoBehaviour
 {
-    Rigidbody2D rb;
-    [SerializeField] int jumpPower;
-
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-    bool isGrounded;
+    private Rigidbody2D rb;
+    private float raycastDistance = .95f;
+    private Color rayColor = Color.red;    
+    private LayerMask solLayer;
+    [SerializeField] private int jumpPower;    
+    private bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        solLayer = LayerMask.GetMask("Ground");
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(.18f,.06f), CapsuleDirection2D.Horizontal, 0, groundLayer);
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        CheckGround();       
+    }
+    private void CheckGround()
+    {
+        Vector3 rayOrigin = transform.position;
+        isGrounded = Physics2D.Raycast(rayOrigin, Vector3.down, raycastDistance, solLayer);
+        Debug.DrawRay(rayOrigin, Vector3.down * raycastDistance, rayColor);
+
+        Debug.Log("jumpaxis: " + Input.GetAxis("Jump"));
+        Debug.Log("jumpbutton: " + Input.GetButtonDown("Jump")); 
+
+        if (Input.GetAxis("Jump")>0 && isGrounded) 
         {
+            Debug.Log("Jump");            
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
+        Debug.Log("grounded" + isGrounded);
+        
     }
 }
+
