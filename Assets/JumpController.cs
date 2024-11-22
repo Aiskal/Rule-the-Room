@@ -33,8 +33,9 @@ public class JumpController : MonoBehaviour
 
         if (Input.GetAxis("Jump")>0 && isGrounded) 
         {
-            Debug.Log("Jump");            
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            Debug.Log("Jump");
+            Vector2 jump = new(0, jumpPower);
+            rb.velocity += jump;
         }
         Debug.Log("grounded" + isGrounded);
         
