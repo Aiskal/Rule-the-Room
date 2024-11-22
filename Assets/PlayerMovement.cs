@@ -6,11 +6,16 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] float m_speed;
+    [SerializeField] float m_jumpPower;
+    [SerializeField] private float raycastDistance = .95f;
+    private Color rayColor = Color.red;
+    private LayerMask solLayer;
     [SerializeField] Transform m_transform;
     [SerializeField] SpriteRenderer m_spriteRenderer;
+    [SerializeField] Rigidbody2D m_rb;
 
     private float horizontalInput;
-
+    private bool isGrounded;
     //List<int> m_list = new List<int>();
 
     // Start is called before the first frame update
@@ -19,24 +24,43 @@ public class PlayerMovement : MonoBehaviour
         
         m_transform = GetComponent<Transform>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
-        
+        m_rb = GetComponent<Rigidbody2D>();
+        solLayer = LayerMask.GetMask("Ground");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        movement();
+        movement();        
     }
     private void OnEnable()
     {
         MovePlayerButton.OnMove += HandleMove;
         MovePlayerButton.OnStop += StopMove;
+        MovePlayerButton.OnJump += HandleJump;
     }
     private void HandleMove(bool isLeft)
     {
         horizontalInput = isLeft ? -1 : 1; 
     }
-
+    private void HandleJump()
+    {
+        CheckGround();
+        // Vérifiez si le joueur est au sol avant de sauter
+        if (isGrounded)
+        {
+            
+            Debug.Log("Le joueur saute !");
+            m_rb.velocity = new Vector2(m_rb.velocity.x, m_jumpPower);  // Applique une impulsion verticale
+        }
+    }
+    private void CheckGround()
+    {
+        // Raycast vers le bas pour vérifier si le joueur touche le sol
+        Vector3 rayOrigin = transform.position;
+        isGrounded = Physics2D.Raycast(rayOrigin, Vector3.down, raycastDistance, solLayer);
+        Debug.DrawRay(m_transform.position, Vector2.down * 0.1f, Color.red);        
+    }
     private void StopMove()
     {
         horizontalInput = 0; 
@@ -54,6 +78,6 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayerButton.OnMove -= HandleMove;
         MovePlayerButton.OnStop -= StopMove;
-
+        MovePlayerButton.OnJump -= HandleJump;
     }
 }

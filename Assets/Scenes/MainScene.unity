@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 32089540}
   - component: {fileID: 32089539}
   - component: {fileID: 32089538}
+  - component: {fileID: 32089542}
   m_Layer: 0
   m_Name: LeftBtn
   m_TagString: Untagged
@@ -184,7 +185,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.2216981, g: 0.6876263, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -204,19 +205,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 32089539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 32089541}
-        m_TargetAssemblyTypeName: MovePlayerButton, Assembly-CSharp
-        m_MethodName: BS_GoDirection
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &32089539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +256,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140ce270141e1fd4b800c764d9151773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &32089542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32089536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 32089541}
+          m_TargetAssemblyTypeName: MovePlayerButton, Assembly-CSharp
+          m_MethodName: BS_GoDirection
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 32089541}
+          m_TargetAssemblyTypeName: MovePlayerButton, Assembly-CSharp
+          m_MethodName: BS_StopMoving
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &52213530
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +483,7 @@ GameObject:
   - component: {fileID: 303682976}
   - component: {fileID: 303682975}
   - component: {fileID: 303682978}
+  - component: {fileID: 303682979}
   m_Layer: 0
   m_Name: RightBtn
   m_TagString: Untagged
@@ -498,7 +533,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.22352941, g: 0.6862745, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -518,19 +553,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 303682976}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 303682978}
-        m_TargetAssemblyTypeName: MovePlayerButton, Assembly-CSharp
-        m_MethodName: BS_GoDirection
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &303682976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,6 +604,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140ce270141e1fd4b800c764d9151773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &303682979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303682973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 303682978}
+          m_TargetAssemblyTypeName: MovePlayerButton, Assembly-CSharp
+          m_MethodName: BS_GoDirection
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 303682978}
+          m_TargetAssemblyTypeName: MovePlayerButton, Assembly-CSharp
+          m_MethodName: BS_StopMoving
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &447355534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1641,71 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &926361241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4098396235052974049, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309113454366439024, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_jumpPower
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8640177
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185278268818128454, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7143640b466ebf4e88ba632271769f8, type: 3}
 --- !u!1 &1012009145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,6 +2064,7 @@ GameObject:
   - component: {fileID: 1257642632}
   - component: {fileID: 1257642631}
   - component: {fileID: 1257642634}
+  - component: {fileID: 1257642636}
   m_Layer: 0
   m_Name: JumpBtn
   m_TagString: Untagged
@@ -1980,7 +2114,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.9528302, g: 0.1033731, b: 0.1033731, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2000,19 +2134,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1257642632}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1257642634}
-        m_TargetAssemblyTypeName: MovePlayerButton, Assembly-CSharp
-        m_MethodName: BS_Jump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!114 &1257642632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,6 +2185,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140ce270141e1fd4b800c764d9151773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1257642636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257642629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1257642634}
+          m_TargetAssemblyTypeName: MovePlayerButton, Assembly-CSharp
+          m_MethodName: BS_Jump
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1409891326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,11 +2915,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4043712690478730133, guid: 12041f459f0eac64290a5b1a0f6bbc6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.0699997
+      value: -3.97
       objectReference: {fileID: 0}
     - target: {fileID: 4043712690478730133, guid: 12041f459f0eac64290a5b1a0f6bbc6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0900006
+      value: -3.95
       objectReference: {fileID: 0}
     - target: {fileID: 4043712690478730133, guid: 12041f459f0eac64290a5b1a0f6bbc6e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2902,30 +3053,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994c66b6148109b489689ed705d244cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Parent: {fileID: 0}
-  SiblingIndex: 0
-  LayoutPosition: {x: 0, y: 0, z: 0}
-  LayoutRotation: {x: 0, y: 0, z: 0, w: 1}
-  AdapterBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 463.06787, y: 205.26898, z: 0}
-  LayoutBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 463.06787, y: 205.26898, z: 0}
-  RotatedAndScaledBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 463.06787, y: 205.26898, z: 0}
-  ComponentScale: {x: 1, y: 1, z: 1}
-  FillSize: {x: 926.13574, y: 851.0759, z: 0}
-  ShrinkSize: {x: 999999, y: 999999, z: 999999}
-  TargetPosition: {x: -463.06787, y: -220.26898, z: 0}
-  TargetRotation: {x: -0, y: -0, z: -0, w: 1}
-  TargetScale: {x: 1, y: 1, z: 1}
-  TargetRectSize: {x: 926.13574, y: 410.53796, z: 0}
-  TransformPosition: {x: -463.06787, y: -220.26898, z: 0}
-  TransformRotation: {x: -0, y: -0, z: -0, w: 1}
-  TransformScale: {x: 1, y: 1, z: 1}
-  TransformRectSize: {x: 926.13574, y: 410.53796}
 --- !u!114 &1502972802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3859,3 +3986,4 @@ SceneRoots:
   - {fileID: 2052937647}
   - {fileID: 1436463432}
   - {fileID: 1012009146}
+  - {fileID: 926361241}

@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class JumpController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody2D m_rb;
     private float raycastDistance = .95f;
     private Color rayColor = Color.red;    
     private LayerMask solLayer;
-    [SerializeField] private int jumpPower;    
+    [SerializeField] private int m_jumpPower;    
     private bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        m_rb = GetComponent<Rigidbody2D>();
         solLayer = LayerMask.GetMask("Ground");
     }
 
@@ -34,7 +34,7 @@ public class JumpController : MonoBehaviour
         if (Input.GetAxis("Jump")>0 && isGrounded) 
         {
             //Debug.Log("Jump");            
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            m_rb.velocity = new Vector2(m_rb.velocity.x, m_jumpPower);
         }
         //Debug.Log("grounded" + isGrounded);
         
