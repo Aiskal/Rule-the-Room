@@ -13,13 +13,13 @@ public class Pencil : MonoBehaviour
 
     private void OnEnable()
     {
-        PencilItem.OnItemUsed.AddListener(EquipPencil);
+        PencilItem.OnItemEquiped.AddListener(EquipPencil);
         PencilItem.OnItemUnEquip.AddListener(UnEquipPencil);
     }
 
     private void OnDisable()
     {
-        PencilItem.OnItemUsed.RemoveListener(EquipPencil);
+        PencilItem.OnItemEquiped.RemoveListener(EquipPencil);
         PencilItem.OnItemUnEquip.RemoveListener(UnEquipPencil);
     }
 

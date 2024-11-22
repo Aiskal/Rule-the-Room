@@ -19,7 +19,7 @@ public class WallJump : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         m_transform = rb2D.transform;
-
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void Update()

@@ -19,12 +19,22 @@ public class RulerObject : MonoBehaviour
         rulerRb = GetComponent<Rigidbody2D>();
         rulerCollider = GetComponent<BoxCollider2D>();
         //definir position par rapport au transform du joueur
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, baseRotation * RotaDirection);
     }
+
+    private void OnEnable()
+    {
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, baseRotation * RotaDirection);
+        if(rulerRb == null)
+        {
+            rulerRb = GetComponent<Rigidbody2D>();
+        }
+        rulerRb.isKinematic = false;
+    }
+
 
     void Update()
     {
-        if (rulerRb.velocity.magnitude < 0.001f)
+        if (rulerRb.velocity.magnitude < 0.01f)
         {
             StartCoroutine(DeleteRuler());
         }
@@ -42,8 +52,20 @@ public class RulerObject : MonoBehaviour
 
     IEnumerator DeleteRuler()
     {
-        rulerRb.isKinematic = true;
-        yield return new WaitForSeconds(RulerItem.TimeAlive);
-        Destroy(gameObject);
+        
+        yield return new WaitForSeconds(lifetime);
+
+        // Désactiver le Rigidbody2D pour qu'il cesse d'interagir avec la physique
+        if (rulerRb != null)
+        {
+            rulerRb.isKinematic = true;
+        }
+        
+        // Après un certain temps de vie, désactiver l'objet
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(1);
+        rulerRb.isKinematic = false;
+        
     }
 }

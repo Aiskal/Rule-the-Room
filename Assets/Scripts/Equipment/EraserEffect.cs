@@ -14,13 +14,13 @@ public class EraserEffect : MonoBehaviour
 
     private void OnEnable()
     {
-        EraserItem.OnItemUsed.AddListener(EquipEraser);
+        EraserItem.OnItemEquiped.AddListener(EquipEraser);
         EraserItem.OnItemUnEquip.AddListener(UnequipEraser);
     }
 
     private void OnDisable()
     {
-        EraserItem.OnItemUsed.RemoveListener(EquipEraser);
+        EraserItem.OnItemEquiped.RemoveListener(EquipEraser);
         EraserItem.OnItemUnEquip.RemoveListener(UnequipEraser);
     }
 
