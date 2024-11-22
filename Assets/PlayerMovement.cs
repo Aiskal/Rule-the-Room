@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float m_speed;
     [SerializeField] float m_jumpPower;
-    [SerializeField] private float raycastDistance = .95f;
+    [SerializeField] private float raycastDistance = .1f;
     //private Color rayColor = Color.red;
     private LayerMask solLayer;
     [SerializeField] Transform m_transform;
