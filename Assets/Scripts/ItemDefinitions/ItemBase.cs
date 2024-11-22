@@ -4,7 +4,7 @@ public abstract class ItemBase
 {
     public static bool IsUnlocked { get; private set; } = false;
 
-
+    public abstract string GetDescription();
     
     public static void Unlock()
     {
@@ -22,3 +22,8 @@ public abstract class ItemBase
 #endregion
 
 }
+
+
+
+
+

@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class JumpController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody2D m_rb;
     private float raycastDistance = .95f;
-    private Color rayColor = Color.red;    
+    //private Color rayColor = Color.red;    
     private LayerMask solLayer;
-    [SerializeField] private int jumpPower;    
+    [SerializeField] private int m_jumpPower;    
     private bool isGrounded;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        m_rb = GetComponent<Rigidbody2D>();
         solLayer = LayerMask.GetMask("Ground");
     }
 
@@ -26,18 +26,18 @@ public class JumpController : MonoBehaviour
     {
         Vector3 rayOrigin = transform.position;
         isGrounded = Physics2D.Raycast(rayOrigin, Vector3.down, raycastDistance, solLayer);
-        Debug.DrawRay(rayOrigin, Vector3.down * raycastDistance, rayColor);
+        //Debug.DrawRay(rayOrigin, Vector3.down * raycastDistance, rayColor);
 
-        Debug.Log("jumpaxis: " + Input.GetAxis("Jump"));
-        Debug.Log("jumpbutton: " + Input.GetButtonDown("Jump")); 
+        //Debug.Log("jumpaxis: " + Input.GetAxis("Jump"));
+        //Debug.Log("jumpbutton: " + Input.GetButtonDown("Jump")); 
 
         if (Input.GetAxis("Jump")>0 && isGrounded) 
         {
             Debug.Log("Jump");
-            Vector2 jump = new(0, jumpPower);
-            rb.velocity += jump;
+            Vector2 jump = new(0, m_jumpPower);
+            m_rb.velocity += jump;
         }
-        Debug.Log("grounded" + isGrounded);
+        //Debug.Log("grounded" + isGrounded);
         
     }
 }
