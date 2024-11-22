@@ -26,17 +26,17 @@ public class JumpController : MonoBehaviour
     {
         Vector3 rayOrigin = transform.position;
         isGrounded = Physics2D.Raycast(rayOrigin, Vector3.down, raycastDistance, solLayer);
-        Debug.DrawRay(rayOrigin, Vector3.down * raycastDistance, rayColor);
+        //Debug.DrawRay(rayOrigin, Vector3.down * raycastDistance, rayColor);
 
-        Debug.Log("jumpaxis: " + Input.GetAxis("Jump"));
-        Debug.Log("jumpbutton: " + Input.GetButtonDown("Jump")); 
+        //Debug.Log("jumpaxis: " + Input.GetAxis("Jump"));
+        //Debug.Log("jumpbutton: " + Input.GetButtonDown("Jump")); 
 
         if (Input.GetAxis("Jump")>0 && isGrounded) 
         {
-            Debug.Log("Jump");            
+            //Debug.Log("Jump");            
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
-        Debug.Log("grounded" + isGrounded);
+        //Debug.Log("grounded" + isGrounded);
         
     }
 }
