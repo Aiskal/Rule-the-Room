@@ -6,7 +6,7 @@ public class JumpController : MonoBehaviour
 {
     private Rigidbody2D m_rb;
     private float raycastDistance = .95f;
-    private Color rayColor = Color.red;    
+    //private Color rayColor = Color.red;    
     private LayerMask solLayer;
     [SerializeField] private int m_jumpPower;    
     private bool isGrounded;

@@ -8,10 +8,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float m_speed;
     [SerializeField] float m_jumpPower;
     [SerializeField] private float raycastDistance = .95f;
-    private Color rayColor = Color.red;
+    //private Color rayColor = Color.red;
     private LayerMask solLayer;
     [SerializeField] Transform m_transform;
-    [SerializeField] SpriteRenderer m_spriteRenderer;
+    //[SerializeField] SpriteRenderer m_spriteRenderer;
     [SerializeField] Rigidbody2D m_rb;
 
     private float horizontalInput;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         m_transform = GetComponent<Transform>();
-        m_spriteRenderer = GetComponent<SpriteRenderer>();
+        //m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_rb = GetComponent<Rigidbody2D>();
         solLayer = LayerMask.GetMask("Ground");
     }
@@ -41,7 +41,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void HandleMove(bool isLeft)
     {
-        horizontalInput = isLeft ? -1 : 1; 
+        horizontalInput = isLeft ? -1 : 1;
+
+        Vector3 currentScale = transform.localScale;
+
+        if (isLeft && currentScale.x > 0) currentScale.x = -Mathf.Abs(currentScale.x);
+        else if (!isLeft && currentScale.x < 0) currentScale.x = Mathf.Abs(currentScale.x);
+
+        transform.localScale = currentScale;
     }
     private void HandleJump()
     {
@@ -59,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         // Raycast vers le bas pour vérifier si le joueur touche le sol
         Vector3 rayOrigin = transform.position;
         isGrounded = Physics2D.Raycast(rayOrigin, Vector3.down, raycastDistance, solLayer);
-        Debug.DrawRay(m_transform.position, Vector2.down * 0.1f, Color.red);        
+        //Debug.DrawRay(m_transform.position, Vector2.down * 0.1f, Color.red);        
     }
     private void StopMove()
     {
