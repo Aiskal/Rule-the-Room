@@ -2,6 +2,7 @@ using UnityEngine.Events;
 
 public abstract class ItemBase
 {
+    public static ItemIdentifier identity;
     public static bool IsUnlocked { get; private set; } = false;
 
     public abstract string GetDescription();
@@ -23,6 +24,19 @@ public abstract class ItemBase
 
 }
 
+
+
+public enum ItemIdentifier
+{
+    None,
+    Pencil,
+    Eraser,
+    Skotch,
+    Ruler, 
+    Hammer,
+    Plane, 
+    Catapults
+}
 
 
 
