@@ -1,12 +1,10 @@
-using Unity.VisualScripting;
-using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class ItemBase
 {
     public static bool IsUnlocked { get; private set; } = false;
 
-
+    public abstract string GetDescription();
     
     public static void Unlock()
     {
