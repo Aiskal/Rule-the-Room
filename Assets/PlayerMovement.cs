@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] SpriteRenderer m_spriteRenderer;
     
 
-    List<int> m_list = new List<int>();
+    //List<int> m_list = new List<int>();
    
 
 
