@@ -1,4 +1,4 @@
-public class Scotch : ItemBase
+public class SkotchItem : ItemBase
 {
     public override string GetDescription()
     {
