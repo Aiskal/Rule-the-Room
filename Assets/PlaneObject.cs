@@ -6,13 +6,12 @@ using UnityEngine.UIElements;
 public class PlaneObject : MonoBehaviour
 {
 
-    [SerializeField] private float speed, fadeSpeed;
-
-
+    private float speed = PlaneItem.FlightSpeed;
+    private float fadeSpeed = PlaneItem.FadeTime;
     
     private Transform m_transform;
     private Material m_material;
-    private int layerToIgnore = 3;
+    
 
 
     // Start is called before the first frame update
@@ -20,8 +19,7 @@ public class PlaneObject : MonoBehaviour
     {
         m_transform = GetComponent<Transform>();
         m_material = GetComponent<Renderer>().material;
-        int layerObject = gameObject.layer;
-        Physics.IgnoreLayerCollision(layerObject, layerToIgnore, true);
+        
     }
 
     void FixedUpdate()
