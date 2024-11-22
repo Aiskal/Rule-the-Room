@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float m_speed;
     [SerializeField] float m_jumpPower;
-    [SerializeField] private float raycastDistance = .95f;
+    [SerializeField] private float raycastDistance = .1f;
     //private Color rayColor = Color.red;
     private LayerMask solLayer;
     [SerializeField] Transform m_transform;
@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontalInput;
     private bool isGrounded;
+
+    public int PlayerDirection { get; private set; } = 1;
+
     //List<int> m_list = new List<int>();
 
     // Start is called before the first frame update
@@ -42,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     private void HandleMove(bool isLeft)
     {
         horizontalInput = isLeft ? -1 : 1;
+        PlayerDirection = (int)horizontalInput;
 
         Vector3 currentScale = transform.localScale;
 
