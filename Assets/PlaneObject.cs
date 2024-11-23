@@ -7,10 +7,10 @@ using UnityEngine.UIElements;
 
 public class PlaneObject : MonoBehaviour
 {
-    public int RotaDirection = 1;
-    public float baseRotation = PlaneItem.SpawnRotation;
-    private float speed = PlaneItem.FlightSpeed;
-    private float fadeSpeed = PlaneItem.FadeTime;
+    public int RotaDirection;
+    //public float baseRotation;
+    private float speed;
+    private float fadeSpeed;
     //Coroutine planeCoroutine=StartCoroutine(DestroyCoroutine());  
     private Rigidbody2D planeRb;
     private Transform m_transform;
@@ -24,7 +24,13 @@ public class PlaneObject : MonoBehaviour
         planeRb = GetComponent<Rigidbody2D>();
         m_transform = GetComponent<Transform>();
         m_material = GetComponent<Renderer>().material;
-    }
+
+        RotaDirection = -1;
+        //baseRotation = PlaneItem.SpawnRotation;
+        speed = PlaneItem.FlightSpeed;
+        fadeSpeed = PlaneItem.FadeTime;
+
+}
 
     void FixedUpdate()
     {
@@ -32,7 +38,7 @@ public class PlaneObject : MonoBehaviour
     }
     private void OnEnable()
     {
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, baseRotation * RotaDirection);
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, RotaDirection);
         if (planeRb == null)
         {
             planeRb = GetComponent<Rigidbody2D>();

@@ -1,8 +1,8 @@
 public class PlaneItem : ItemBase
 {
-    public static float BaseRotation { get; } = 30;
+    //public static float BaseRotation { get; } = 30;
 
-    public static float SpawnRotation { get => BaseRotation; }
+    //public static float SpawnRotation { get => BaseRotation; }
     public static float FlightSpeed { get; } = 4;
 
     public static float FadeTime { get; } = 1f;

@@ -22,6 +22,8 @@ public class BaseInventorySlot : MonoBehaviour
         Transform childTransformBg = transform.Find("Image");
         slotImageBg = childTransformBg.GetComponent<Image>();
         button = GetComponent<Button>();
+
+        UpdateButtonState();
     }
 
     public virtual void ItemClicked()
@@ -35,7 +37,6 @@ public class BaseInventorySlot : MonoBehaviour
 
     private void UpdateButtonState()
     {
-        Button button = GetComponent<Button>();
         if (button != null)
         {
             if (selected)
