@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CraftingTable : MonoBehaviour
 {
-    [SerializeField] List<BaseInventorySlot<ItemBase>> slots;
+    [SerializeField] List<BaseInventorySlot> slots;
     [SerializeField] Image baseImage;
     [SerializeField] Button CraftButton;
     List<ItemIdentifier> craftingContent;

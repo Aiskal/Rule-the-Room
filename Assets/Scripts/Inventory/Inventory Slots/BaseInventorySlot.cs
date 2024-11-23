@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class BaseInventorySlot<T> : MonoBehaviour where T : ItemBase
+public class BaseInventorySlot : MonoBehaviour
 {
     [SerializeField] Sprite slotsprite;
     Image slotImage;
