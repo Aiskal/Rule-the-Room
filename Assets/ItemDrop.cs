@@ -15,14 +15,21 @@ public class ItemDrop : MonoBehaviour
 
         Debug.Log(m_item);
 
-        switch (m_item)
-        {
-            case ItemIdentifier.None: break;
-            case ItemIdentifier.Pencil: PencilItem.Unlock(); break;
-            case ItemIdentifier.Eraser: EraserItem.Unlock(); break;
-            case ItemIdentifier.Skotch: SkotchItem.Unlock(); break;
-            case ItemIdentifier.Ruler: RulerItem.Unlock(); break;
-        }
+        /*        switch (m_item)
+                {
+                    case ItemIdentifier.None: break;
+                    case ItemIdentifier.Pencil: PencilItem.Unlock(); break;
+                    case ItemIdentifier.Eraser: EraserItem.Unlock(); break;
+                    case ItemIdentifier.Skotch: SkotchItem.Unlock(); break;
+                    case ItemIdentifier.Ruler: RulerItem.Unlock(); break;
+                }
+        }*/
+
+        PencilItem.Unlock();
+        EraserItem.Unlock();
+        SkotchItem.Unlock();
+        RulerItem.Unlock();
+
         Destroy(gameObject);
     }
 

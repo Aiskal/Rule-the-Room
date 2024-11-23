@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine.Events;
 
 public abstract class ItemBase
@@ -8,7 +9,10 @@ public abstract class ItemBase
     
     public static void Unlock()
     {
-        if (IsUnlocked) return;
+        if (IsUnlocked)
+        {
+            return;
+        }
 
         IsUnlocked = true;
         OnItemUnlocked.Invoke(identity);

@@ -18,4 +18,9 @@ public class EraserSlot : BaseInventorySlot
 
         base.ItemClicked();
     }
+
+    protected override bool IsUnlocked()
+    {
+        return EraserItem.IsUnlocked;
+    }
 }
