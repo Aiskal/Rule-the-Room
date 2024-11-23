@@ -824,7 +824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bc14474b7398e4bb5de5cd583bff59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeSprite: {fileID: 3023341752111700646}
+  planeSprite: {fileID: 3055700654652232899, guid: fd49b46ca2017d3428f26049e7f4f6e2, type: 3}
   PreFabPlane: {fileID: 3055700654652232899, guid: fd49b46ca2017d3428f26049e7f4f6e2, type: 3}
   player: {fileID: 1018373646}
 --- !u!1 &460470353 stripped
@@ -1506,6 +1506,7 @@ Transform:
   - {fileID: 8224383424935687837}
   - {fileID: 2843282825084021153}
   - {fileID: 3345715698813247413}
+  - {fileID: 1127751082}
   m_Father: {fileID: 1012009146}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &899435170
@@ -1967,11 +1968,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3055700654652232899, guid: fd49b46ca2017d3428f26049e7f4f6e2, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1467043130}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd49b46ca2017d3428f26049e7f4f6e2, type: 3}
+--- !u!4 &1127751082 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3954245239234294624, guid: fd49b46ca2017d3428f26049e7f4f6e2, type: 3}
+  m_PrefabInstance: {fileID: 1127751081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1135844789
 GameObject:
   m_ObjectHideFlags: 0
