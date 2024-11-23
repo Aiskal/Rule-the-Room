@@ -13,15 +13,15 @@ public class ItemDrop : MonoBehaviour
         Debug.Log("AAAAAAA");
         if (collision.gameObject.layer != 3) return;
 
+        Debug.Log(m_item);
 
         switch (m_item)
         {
-            case ItemIdentifier.None: return;
-            case ItemIdentifier.Eraser: EraserItem.Unlock(); return;
-            case ItemIdentifier.Pencil: PencilItem.Unlock(); return;
-            case ItemIdentifier.Skotch: SkotchItem.Unlock(); return;
-            case ItemIdentifier.Ruler: RulerItem.Unlock(); return;
-
+            case ItemIdentifier.None: break;
+            case ItemIdentifier.Pencil: PencilItem.Unlock(); break;
+            case ItemIdentifier.Eraser: EraserItem.Unlock(); break;
+            case ItemIdentifier.Skotch: SkotchItem.Unlock(); break;
+            case ItemIdentifier.Ruler: RulerItem.Unlock(); break;
         }
         Destroy(gameObject);
     }
