@@ -12,7 +12,6 @@ public class SkotchEffect : MonoBehaviour
     {
         wallJump = playerMovement.gameObject.AddComponent<WallJumpa>();
         UnequipSkotch(ItemIdentifier.Skotch);
-        EquipSkotch(ItemIdentifier.Skotch);
     }
 
 

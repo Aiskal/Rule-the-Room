@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class BaseInventorySlot : MonoBehaviour
 {
     [SerializeField] Sprite slotsprite;
+    [SerializeField] GameObject description;
+
     Image slotImage;
     Image slotImageBg;
     bool selected;
@@ -32,6 +34,7 @@ public class BaseInventorySlot : MonoBehaviour
         selected = !selected;
         slotImage.color = new Color(100, 255, 100);
         UpdateButtonState();
+        UpdateDescription(description);
     }
     public UnityEvent<ItemIdentifier> ItemSelected { get; set; } = new();
 
@@ -54,5 +57,10 @@ public class BaseInventorySlot : MonoBehaviour
         {
             Debug.LogWarning("Aucun bouton trouvé pour gérer l'état Selected.");
         }
+    }
+
+    public virtual void UpdateDescription(GameObject description)
+    {
+
     }
 }

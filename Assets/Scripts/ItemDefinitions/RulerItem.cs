@@ -6,7 +6,7 @@ public class RulerItem : ItemBase
 
     public static float TimeAlive { get; } = 6f;
 
-    public override string GetDescription()
+    public static string GetDescription()
     {
         return "Cette règle en plastique transparent, avec des chiffres légèrement effacés, est un guide précieux pour maintenir les choses droites et alignées." +
             " Dans l’esprit de l’enfant, elle devient une passerelle entre l’ordre et le chaos, un outil pour construire quelque chose de solide malgré l’incertitude." +
