@@ -11,8 +11,7 @@ public class SkotchEffect : MonoBehaviour
     private void Start()
     {
         wallJump = playerMovement.gameObject.AddComponent<WallJump>();
-        UnequipSkotch();
-        EquipSkotch();
+        UnequipSkotch(ItemIdentifier.Skotch);
     }
 
 
@@ -28,14 +27,18 @@ public class SkotchEffect : MonoBehaviour
         EraserItem.OnItemUnEquip.RemoveListener(UnequipSkotch);
     }
 
-    void EquipSkotch()
+    void EquipSkotch(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Skotch) return;
+
         skotchSprite.SetActive(true);
         wallJump.enabled = true;
     }
 
-    void UnequipSkotch()
+    void UnequipSkotch(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Skotch) return;
+
         skotchSprite.SetActive(false);
         wallJump.enabled = false;
     }

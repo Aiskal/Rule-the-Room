@@ -8,7 +8,7 @@ public class Pencil : MonoBehaviour
 
     private void Start()
     {
-        UnEquipPencil();
+        UnEquipPencil(ItemIdentifier.Pencil);
     }
 
     private void OnEnable()
@@ -23,13 +23,15 @@ public class Pencil : MonoBehaviour
         PencilItem.OnItemUnEquip.RemoveListener(UnEquipPencil);
     }
 
-    void EquipPencil()
+    void EquipPencil(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Pencil) return;
         pencilSprite.SetActive(true);
     }
 
-    void UnEquipPencil()
+    void UnEquipPencil(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Pencil) return;
         pencilSprite.SetActive(false);
     }
 }
