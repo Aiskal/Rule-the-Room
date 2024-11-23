@@ -10,7 +10,9 @@ public class ItemDrop : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("AAAAAAA");
         if (collision.gameObject.layer != 3) return;
+
 
         switch (m_item)
         {
@@ -21,6 +23,7 @@ public class ItemDrop : MonoBehaviour
             case ItemIdentifier.Ruler: RulerItem.Unlock(); return;
 
         }
+        Destroy(gameObject);
     }
 
 }
