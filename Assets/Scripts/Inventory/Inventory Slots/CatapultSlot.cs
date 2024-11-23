@@ -13,7 +13,7 @@ public class CatapultSlot : BaseInventorySlot
 
     public override void ItemClicked()
     {
-        if (CatapultItem.IsUnlocked) return;
+        if (!CatapultItem.IsUnlocked) return;
 
         base.ItemClicked();
     }
