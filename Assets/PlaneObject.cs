@@ -9,7 +9,7 @@ public class PlaneObject : MonoBehaviour
 {
 
     private float speed = PlaneItem.FlightSpeed;
-    private float fadeSpeed = PlaneItem.FadeTime-5; // -5 pour faire disparaitre l'avion plus tard et laisser le temps au joueur d'atterir, sinon il no clip.
+    private float fadeSpeed = PlaneItem.FadeTime; 
     //Coroutine planeCoroutine=StartCoroutine(DestroyCoroutine());  
     private Transform m_transform;
     private Material m_material;
