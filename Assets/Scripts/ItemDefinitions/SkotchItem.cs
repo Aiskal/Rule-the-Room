@@ -1,6 +1,6 @@
 public class SkotchItem : ItemBase
 {
-    public override string GetDescription()
+    public static string GetDescription()
     {
         return "Un petit rouleau de scotch presque vide, avec des morceaux de ruban découpés de travers. Fragile mais tenace, il sert à tout réparer, tout recoller." +
             " Pour le petit soldat, il devient le lien entre les rêves brisés et les espoirs reconstruits. Avec un bout de scotch, tout peut tenir," +
