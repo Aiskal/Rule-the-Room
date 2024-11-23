@@ -10,7 +10,7 @@ public class PlaneEffect : MonoBehaviour
     Coroutine planeCoroutine;
 
     GameObject planeObject;
-
+    
 
     private void Start()
     {
@@ -30,6 +30,7 @@ public class PlaneEffect : MonoBehaviour
     {
         PlaneItem.OnItemEquiped.RemoveListener(EquipPlane);
         PlaneItem.OnItemUnEquip.RemoveListener(UnEquipPlane);
+        WeaponButton.OnDoAction -= spawnPlane;
     }
 
     void EquipPlane()
