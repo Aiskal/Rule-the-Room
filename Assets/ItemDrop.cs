@@ -8,7 +8,7 @@ public class ItemDrop : MonoBehaviour
     [SerializeField] SpriteRenderer m_spriteRenderer;
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer != 3) return;
 
@@ -24,3 +24,4 @@ public class ItemDrop : MonoBehaviour
     }
 
 }
+s

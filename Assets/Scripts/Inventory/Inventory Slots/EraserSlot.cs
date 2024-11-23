@@ -10,6 +10,8 @@ public class EraserSlot : BaseInventorySlot
         Identifyer = ItemIdentifier.Eraser;
     }
 
+
+
     public override void ItemClicked()
     {
         if (!EraserItem.IsUnlocked) return;

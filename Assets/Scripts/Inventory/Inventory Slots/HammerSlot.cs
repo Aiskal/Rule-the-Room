@@ -16,4 +16,9 @@ public class HammerSlot : BaseInventorySlot
 
         base.ItemClicked();
     }
+
+    protected override bool IsUnlocked()
+    {
+        return HammerItem.IsUnlocked;
+    }
 }

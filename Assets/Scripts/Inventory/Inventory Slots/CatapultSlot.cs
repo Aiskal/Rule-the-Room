@@ -18,6 +18,11 @@ public class CatapultSlot : BaseInventorySlot
         base.ItemClicked();
     }
 
+    protected override bool IsUnlocked()
+    {
+        return CatapultItem.IsUnlocked;
+    }
+
     public override void UpdateDescription(GameObject description)
     {
         if (description == null)

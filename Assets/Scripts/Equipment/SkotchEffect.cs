@@ -27,6 +27,7 @@ public class SkotchEffect : MonoBehaviour
         EraserItem.OnItemUnEquip.RemoveListener(UnequipSkotch);
     }
 
+
     void EquipSkotch(ItemIdentifier item)
     {
         if (item != ItemIdentifier.Skotch) return;

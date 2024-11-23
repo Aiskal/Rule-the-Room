@@ -40,13 +40,13 @@ public class BaseInventorySlot : MonoBehaviour
         UpdateDescription(description);
     }
 
-    protected virtual bool IsLocked()
+    protected virtual bool IsUnlocked()
     {
-        return true;
+        return false;
     }
     protected virtual void UpdateButtonLock()
     {
-        if (IsLocked())
+        if (!IsUnlocked())
         {
             if (slotImage != null) slotImage.color = new Color(0f, 0f, 0f, 130f / 255f); ;
             if (slotImageBg != null) slotImageBg.color = new Color32(0x6A, 0x6A, 0x6A, 255);

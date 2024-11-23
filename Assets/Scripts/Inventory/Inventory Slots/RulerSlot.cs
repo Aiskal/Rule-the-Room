@@ -10,6 +10,10 @@ public class RulerSlot : BaseInventorySlot
         Identifyer = ItemIdentifier.Ruler;
     }
 
+    protected override bool IsUnlocked()
+    {
+        return RulerItem.IsUnlocked;
+    }
     public override void ItemClicked()
     {
         if (!RulerItem.IsUnlocked) return;
