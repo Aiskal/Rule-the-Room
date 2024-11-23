@@ -10,11 +10,11 @@ public class PlaneEffect : MonoBehaviour
     Coroutine planeCoroutine;
 
     GameObject planeObject;
-
+    
 
     private void Start()
     {
-        UnEquipPlane();
+        UnEquipPlane(ItemIdentifier.Plane);
         planeObject = Instantiate(PreFabPlane);
         planeObject.gameObject.SetActive(false);
     }
@@ -30,15 +30,20 @@ public class PlaneEffect : MonoBehaviour
     {
         PlaneItem.OnItemEquiped.RemoveListener(EquipPlane);
         PlaneItem.OnItemUnEquip.RemoveListener(UnEquipPlane);
+        WeaponButton.OnDoAction -= spawnPlane;
     }
 
-    void EquipPlane()
+    void EquipPlane(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Plane) return;
+
         planeSprite.SetActive(true);
     }
 
-    void UnEquipPlane()
+    void UnEquipPlane(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Plane) return;
+
         planeSprite.SetActive(false);
     }
 
@@ -54,7 +59,7 @@ public class PlaneEffect : MonoBehaviour
 
     IEnumerator PlaneSpawnProcedure()
     {
-        UnEquipPlane();
+        UnEquipPlane(ItemIdentifier.Plane);
         int playerDirection = player.PlayerDirection;
         Vector3 playerposition = player.transform.position;
 
@@ -71,7 +76,7 @@ public class PlaneEffect : MonoBehaviour
 
         yield return new WaitForSeconds(7);
 
-        EquipPlane();
+        EquipPlane(ItemIdentifier.Plane);
 
 
         planeCoroutine = null;

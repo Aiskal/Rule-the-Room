@@ -7,10 +7,12 @@ using UnityEngine.UIElements;
 
 public class PlaneObject : MonoBehaviour
 {
-
+    public int RotaDirection = 1;
+    public float baseRotation = PlaneItem.SpawnRotation;
     private float speed = PlaneItem.FlightSpeed;
-    private float fadeSpeed = PlaneItem.FadeTime; 
+    private float fadeSpeed = PlaneItem.FadeTime;
     //Coroutine planeCoroutine=StartCoroutine(DestroyCoroutine());  
+    private Rigidbody2D planeRb;
     private Transform m_transform;
     private Material m_material;
     
@@ -19,6 +21,7 @@ public class PlaneObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        planeRb = GetComponent<Rigidbody2D>();
         m_transform = GetComponent<Transform>();
         m_material = GetComponent<Renderer>().material;
         
@@ -28,7 +31,14 @@ public class PlaneObject : MonoBehaviour
     {
         m_transform.position += new Vector3(1 * speed * Time.fixedDeltaTime, 0, 0);
     }
-
+    private void OnEnable()
+    {
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, baseRotation * RotaDirection);
+        if (planeRb == null)
+        {
+            planeRb = GetComponent<Rigidbody2D>();
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
