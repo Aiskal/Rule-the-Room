@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8566581970757603151}
   - component: {fileID: 4886715486284298948}
   - component: {fileID: 6112799597980770735}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Etagere3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

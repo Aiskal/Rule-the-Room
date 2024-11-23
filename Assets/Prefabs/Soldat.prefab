@@ -527,6 +527,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: f18476892e68f5d4cabe38475711a1d1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8430884204742857100}
+<<<<<<< Updated upstream
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: f18476892e68f5d4cabe38475711a1d1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5794408526863688326}
@@ -615,6 +616,7 @@ MonoBehaviour:
   raycastDistance: 0.05
   m_transform: {fileID: 0}
   m_rb: {fileID: 0}
+<<<<<<< Updated upstream
   animator: {fileID: 5794408526863688326}
 --- !u!114 &8430884204742857100
 MonoBehaviour:

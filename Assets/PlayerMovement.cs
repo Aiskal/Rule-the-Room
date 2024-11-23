@@ -40,6 +40,16 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         movement();
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("SPACE BAR uwu");
+            HandleJump();
+        }
     }
 
     private void Update()
