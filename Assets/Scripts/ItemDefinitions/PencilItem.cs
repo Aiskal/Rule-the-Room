@@ -1,5 +1,6 @@
 public class PencilItem : ItemBase
 {
+
     public override string GetDescription()
     {
         return "Ce crayon rouge vif a été taillé de manière maladroite, preuve des nombreuses aventures qu’il a déjà traversées dans les petites mains d’un artiste en herbe." +

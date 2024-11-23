@@ -14,7 +14,7 @@ public class Recipe
     }
 }
 
-public static class Reciepes
+public static class Recipes
 {
     public static List<Recipe> reciepesList = new()
     {

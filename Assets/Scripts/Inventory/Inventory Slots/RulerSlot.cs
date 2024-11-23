@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class RulerSlot : BaseInventorySlot<RulerItem>
 {
-    
+    protected override void Start()
+    {
+        base.Start();
+        Identifyer = ItemIdentifier.Ruler;
+    }
 }

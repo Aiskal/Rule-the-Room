@@ -41,6 +41,14 @@ public class PlayerMovement : MonoBehaviour
     {
         movement();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            HandleJump();
+        }
+    }
     private void OnEnable()
     {
         MovePlayerButton.OnMove += HandleMove;
