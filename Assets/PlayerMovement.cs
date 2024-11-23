@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float m_speed;
     [SerializeField] float m_jumpPower;
-    [SerializeField] private float raycastDistance = .1f;
+    [SerializeField] private float raycastDistance = .95f;
     //private Color rayColor = Color.red;
     private LayerMask solLayer;
     [SerializeField] Transform m_transform;
@@ -20,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public int PlayerDirection { get; private set; } = 1;
 
     //List<int> m_list = new List<int>();
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +32,14 @@ public class PlayerMovement : MonoBehaviour
         //m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_rb = GetComponent<Rigidbody2D>();
         solLayer = LayerMask.GetMask("Ground");
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        movement();        
+        movement();
     }
     private void OnEnable()
     {
@@ -53,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
         else if (!isLeft && currentScale.x < 0) currentScale.x = Mathf.Abs(currentScale.x);
 
         transform.localScale = currentScale;
+
+        animator.SetBool("moving", true);
     }
     private void HandleJump()
     {
@@ -74,7 +81,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void StopMove()
     {
-        horizontalInput = 0; 
+        horizontalInput = 0;
+
+        animator.SetBool("moving", false);
     }
 
     
