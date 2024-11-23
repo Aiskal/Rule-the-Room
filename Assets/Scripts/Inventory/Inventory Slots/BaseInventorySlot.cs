@@ -10,12 +10,15 @@ public class BaseInventorySlot : MonoBehaviour
     [SerializeField] Sprite slotsprite;
     [SerializeField] GameObject description;
 
-    Image slotImage;
-    Image slotImageBg;
-    bool selected;
-    Button button;
+    protected Image slotImage;
+    protected Image slotImageBg;
+    protected Button button;
+    private bool selected;
 
     public ItemIdentifier Identifyer { get; protected set; } = ItemIdentifier.None;
+
+    public UnityEvent<ItemIdentifier> ItemSelected { get; set; } = new();
+
     protected virtual void Start()
     {
         Transform childTransform = transform.Find("Object");
@@ -25,7 +28,7 @@ public class BaseInventorySlot : MonoBehaviour
         slotImageBg = childTransformBg.GetComponent<Image>();
         button = GetComponent<Button>();
 
-        UpdateButtonState();
+        UpdateButtonLock();
     }
 
     public virtual void ItemClicked()
@@ -36,7 +39,24 @@ public class BaseInventorySlot : MonoBehaviour
         UpdateButtonState();
         UpdateDescription(description);
     }
-    public UnityEvent<ItemIdentifier> ItemSelected { get; set; } = new();
+
+    protected virtual bool IsLocked()
+    {
+        return true;
+    }
+    protected virtual void UpdateButtonLock()
+    {
+        if (IsLocked())
+        {
+            if (slotImage != null) slotImage.color = new Color(0f, 0f, 0f, 130f / 255f); ;
+            if (slotImageBg != null) slotImageBg.color = new Color32(0x6A, 0x6A, 0x6A, 255);
+        }
+        else
+        {
+            if (slotImage != null) slotImage.color = Color.white;
+            if (slotImageBg != null) slotImageBg.color = Color.white;
+        }
+    }
 
     private void UpdateButtonState()
     {
