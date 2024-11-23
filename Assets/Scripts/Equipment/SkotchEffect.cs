@@ -6,12 +6,13 @@ public class SkotchEffect : MonoBehaviour
 {
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] GameObject skotchSprite;
-    WallJump wallJump;
+    WallJumpa wallJump;
 
     private void Start()
     {
-        wallJump = playerMovement.gameObject.AddComponent<WallJump>();
-        UnequipSkotch(ItemIdentifier.Skotch);
+        wallJump = playerMovement.gameObject.AddComponent<WallJumpa>();
+        UnequipSkotch();
+        EquipSkotch(ItemIdentifier.Skotch);
     }
 
 

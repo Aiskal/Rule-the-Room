@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2248554864116012460}
   - component: {fileID: 5008039614667601029}
   - component: {fileID: 2608192812600845214}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Comode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
