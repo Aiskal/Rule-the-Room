@@ -24,7 +24,6 @@ public class PlaneObject : MonoBehaviour
         planeRb = GetComponent<Rigidbody2D>();
         m_transform = GetComponent<Transform>();
         m_material = GetComponent<Renderer>().material;
-        
     }
 
     void FixedUpdate()

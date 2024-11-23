@@ -52,13 +52,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            HandleJump();
-        }
-    }
     private void OnEnable()
     {
         MovePlayerButton.OnMove += HandleMove;
