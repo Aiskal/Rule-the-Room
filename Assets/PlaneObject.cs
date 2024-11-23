@@ -75,6 +75,5 @@ public class PlaneObject : MonoBehaviour
         }
       
         Destroy(gameObject);     
-        
     }
 }
