@@ -77,10 +77,8 @@ public class PlaneObject : MonoBehaviour
             {
                 
                 currentColor.a -= fadeSpeed * Time.deltaTime;
-
                 
                 currentColor.a = Mathf.Max(currentColor.a, 0);
-
                 
                 m_material.color = currentColor;
 
