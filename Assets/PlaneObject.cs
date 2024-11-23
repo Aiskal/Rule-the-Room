@@ -76,7 +76,7 @@ public class PlaneObject : MonoBehaviour
             while (currentColor.a > 0)
             {
                 
-                currentColor.a -= fadeSpeed * Time.deltaTime;
+                currentColor.a -= fadeSpeed-1 * Time.deltaTime;
                 
                 currentColor.a = Mathf.Max(currentColor.a, 0);
                 
