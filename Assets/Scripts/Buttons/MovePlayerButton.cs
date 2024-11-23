@@ -26,6 +26,6 @@ public class MovePlayerButton : ButtonBehaviour
     public void BS_Jump()
     {
         OnJump?.Invoke();
-        Debug.Log("Saut déclenché !");
+        Debug.Log("Bouton SAUT");
     }
 }

@@ -442,7 +442,7 @@ Transform:
   m_GameObject: {fileID: 97645107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.39, y: 0.59, z: 0}
+  m_LocalPosition: {x: 1.68, y: 0.53, z: 0}
   m_LocalScale: {x: 0.3184, y: 5.2648134, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4407,7 +4407,7 @@ Transform:
   m_GameObject: {fileID: 1508867373}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.24, y: 3.27, z: 0}
+  m_LocalPosition: {x: 3.5299997, y: 3.21, z: 0}
   m_LocalScale: {x: 3.9304283, y: 0.2049, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5407,7 +5407,7 @@ Transform:
   m_GameObject: {fileID: 1971599468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.25, y: 0.62, z: 0}
+  m_LocalPosition: {x: 3.54, y: 0.56, z: 0}
   m_LocalScale: {x: 3.8428, y: 5.419, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5420,7 +5420,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971599468}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -5521,6 +5521,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!50 &2013886164 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4993737020966432237, guid: beeee4480d8f2134a82ea219b180b2c2, type: 3}
+  m_PrefabInstance: {fileID: 3023341752111700644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2048198365
 GameObject:
   m_ObjectHideFlags: 0
@@ -6328,6 +6333,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4993737020966432237, guid: beeee4480d8f2134a82ea219b180b2c2, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993737020966432237, guid: beeee4480d8f2134a82ea219b180b2c2, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993737020966432237, guid: beeee4480d8f2134a82ea219b180b2c2, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967935578431264799, guid: beeee4480d8f2134a82ea219b180b2c2, type: 3}
+      propertyPath: m_rb
+      value: 
+      objectReference: {fileID: 2013886164}
+    - target: {fileID: 6967935578431264799, guid: beeee4480d8f2134a82ea219b180b2c2, type: 3}
+      propertyPath: m_transform
+      value: 
+      objectReference: {fileID: 297047301}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
