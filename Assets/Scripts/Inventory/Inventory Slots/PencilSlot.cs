@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class PencilSlot : BaseInventorySlot<PencilItem>
 {
-    
+    protected override void Start()
+    {
+        base.Start();
+        Identifyer = ItemIdentifier.Pencil;
+    }
 }

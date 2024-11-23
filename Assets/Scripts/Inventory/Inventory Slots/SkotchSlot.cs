@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class SkotchSlot : BaseInventorySlot<SkotchItem>
 {
-    
+    protected override void Start()
+    {
+        base.Start();
+        Identifyer = ItemIdentifier.Skotch;
+    }
 }

@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class HammerSlot : BaseInventorySlot<HammerItem>
 {
-   
+    protected override void Start()
+    {
+        base.Start();
+        Identifyer = ItemIdentifier.Hammer;
+    }
 }

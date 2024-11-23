@@ -40,12 +40,7 @@ public class WallJump : MonoBehaviour
                 stickCoroutine = StartCoroutine(StickToWall());
             }
         }
-        else
-        {
-           
-            return;
-         
-        }
+
     }
 
     void LockPlayer()
@@ -75,7 +70,7 @@ public class WallJump : MonoBehaviour
                 UnlockPlayer();
                 loop = false;
             }
-            if (Input.GetAxis("Jump") > 0 && allowJump)   
+            if ((Input.GetAxis("Jump") > 0 || Input.GetKeyDown(KeyCode.Space))&& allowJump)
             {
                 allowJump = false;
                 UnlockPlayer();
