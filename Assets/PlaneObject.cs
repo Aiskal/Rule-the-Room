@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,8 +9,8 @@ public class PlaneObject : MonoBehaviour
 {
 
     private float speed = PlaneItem.FlightSpeed;
-    private float fadeSpeed = PlaneItem.FadeTime;
-    
+    private float fadeSpeed = PlaneItem.FadeTime-5; // -5 pour faire disparaitre l'avion plus tard et laisser le temps au joueur d'atterir, sinon il no clip.
+    //Coroutine planeCoroutine=StartCoroutine(DestroyCoroutine());  
     private Transform m_transform;
     private Material m_material;
     
@@ -24,15 +26,27 @@ public class PlaneObject : MonoBehaviour
 
     void FixedUpdate()
     {
-
         m_transform.position += new Vector3(1 * speed * Time.fixedDeltaTime, 0, 0);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision");
+        if (collision.CompareTag("Player"))
+        {
+            collision.transform.SetParent(this.transform);
+
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+            if (collision.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
+        
         StartCoroutine(DestroyCoroutine());
     }
+
 
     IEnumerator DestroyCoroutine()
     {
