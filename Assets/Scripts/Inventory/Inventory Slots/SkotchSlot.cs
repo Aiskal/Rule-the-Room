@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkotchSlot : BaseInventorySlot<SkotchItem>
+public class SkotchSlot : BaseInventorySlot
 {
     protected override void Start()
     {

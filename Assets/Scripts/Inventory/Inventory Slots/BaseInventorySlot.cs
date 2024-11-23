@@ -5,10 +5,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class BaseInventorySlot<T> : MonoBehaviour where T : ItemBase
+public class BaseInventorySlot : MonoBehaviour
 {
     [SerializeField] Sprite slotsprite;
     Image slotImage;
+
+    bool selected;
     public ItemIdentifier Identifyer { get; protected set; } = ItemIdentifier.None;
     protected virtual void Start()
     {
@@ -20,6 +22,8 @@ public class BaseInventorySlot<T> : MonoBehaviour where T : ItemBase
     public void ItemClicked()
     {
         ItemSelected.Invoke(Identifyer);
+        selected = !selected;
+        slotImage.color = new Color(100, 255, 100);
     }
     public UnityEvent<ItemIdentifier> ItemSelected { get; set; } = new();
 }

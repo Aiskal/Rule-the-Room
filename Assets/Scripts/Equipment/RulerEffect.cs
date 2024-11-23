@@ -14,7 +14,7 @@ public class RulerEffect : MonoBehaviour
 
     private void Start()
     {
-        UnEquipRuler();
+        UnEquipRuler(ItemIdentifier.Ruler);
         rulerObject = Instantiate(PreFabRuler);
         rulerObject.gameObject.SetActive(false);
     }
@@ -32,13 +32,15 @@ public class RulerEffect : MonoBehaviour
         RulerItem.OnItemUnEquip.RemoveListener(UnEquipRuler);
     }
 
-    void EquipRuler()
+    void EquipRuler(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Ruler) return;
         rulerSprite.SetActive(true);
     }
 
-    void UnEquipRuler()
+    void UnEquipRuler(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Ruler) return;
         rulerSprite.SetActive(false);
     }
 
@@ -54,7 +56,7 @@ public class RulerEffect : MonoBehaviour
 
     IEnumerator RulerSpawnProcedure()
     {
-        UnEquipRuler();
+        UnEquipRuler(ItemIdentifier.Ruler);
         int playerDirection = player.PlayerDirection;
         Vector3 playerposition = player.transform.position;
 
@@ -71,7 +73,7 @@ public class RulerEffect : MonoBehaviour
 
         yield return new WaitForSeconds(7);
         
-        EquipRuler();
+        EquipRuler(ItemIdentifier.Ruler);
 
         
         rulerCoroutine = null;

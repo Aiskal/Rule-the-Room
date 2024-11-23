@@ -12,14 +12,14 @@ public abstract class ItemBase
         if (IsUnlocked) return;
 
         IsUnlocked = true;
-        OnItemUnlocked.Invoke();
+        OnItemUnlocked.Invoke(identity);
     }
 
 #region EVENTS
 
-    public static UnityEvent OnItemUnlocked { get; set; } = new();
-    public static UnityEvent OnItemEquiped { get; set; } = new();
-    public static UnityEvent OnItemUnEquip { get; set; } = new();
+    public static UnityEvent<ItemIdentifier> OnItemUnlocked { get; set; } = new();
+    public static UnityEvent<ItemIdentifier> OnItemEquiped { get; set; } = new();
+    public static UnityEvent<ItemIdentifier> OnItemUnEquip { get; set; } = new();
 
 #endregion
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CraftingTable : MonoBehaviour
 {
-    [SerializeField] List<BaseInventorySlot<ItemBase>> slots;
+    [SerializeField] List<BaseInventorySlot> slots;
     [SerializeField] Image baseImage;
     [SerializeField] Button CraftButton;
     List<ItemIdentifier> craftingContent;
@@ -62,13 +62,13 @@ public class CraftingTable : MonoBehaviour
     {
         switch (validResult)
         {
-            case ItemIdentifier.Pencil: PencilItem.OnItemEquiped.Invoke(); break;
-            case ItemIdentifier.Eraser: EraserItem.OnItemEquiped.Invoke(); break;
-            case ItemIdentifier.Skotch: SkotchItem.OnItemEquiped.Invoke(); break;
-            case ItemIdentifier.Hammer: HammerItem.OnItemEquiped.Invoke(); break;
-            case ItemIdentifier.Plane: PlaneItem.OnItemEquiped.Invoke(); break;
-            case ItemIdentifier.Ruler: RulerItem.OnItemEquiped.Invoke(); break;
-            case ItemIdentifier.Catapults: CatapultItem.OnItemEquiped.Invoke(); break;
+            case ItemIdentifier.Pencil: PencilItem.OnItemEquiped.Invoke(validResult); break;
+            case ItemIdentifier.Eraser: EraserItem.OnItemEquiped.Invoke(validResult); break;
+            case ItemIdentifier.Skotch: SkotchItem.OnItemEquiped.Invoke(validResult); break;
+            case ItemIdentifier.Hammer: HammerItem.OnItemEquiped.Invoke(validResult); break;
+            case ItemIdentifier.Plane: PlaneItem.OnItemEquiped.Invoke(validResult); break;
+            case ItemIdentifier.Ruler: RulerItem.OnItemEquiped.Invoke(validResult); break;
+            case ItemIdentifier.Catapults: CatapultItem.OnItemEquiped.Invoke(validResult); break;
         }
     }
 

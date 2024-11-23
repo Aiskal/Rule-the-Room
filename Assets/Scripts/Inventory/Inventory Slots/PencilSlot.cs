@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PencilSlot : BaseInventorySlot<PencilItem>
+public class PencilSlot : BaseInventorySlot
 {
     protected override void Start()
     {

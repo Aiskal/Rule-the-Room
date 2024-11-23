@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EraserSlot : BaseInventorySlot<EraserItem>
+public class EraserSlot : BaseInventorySlot
 {
     protected override void Start()
     {

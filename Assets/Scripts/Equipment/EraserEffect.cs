@@ -8,7 +8,7 @@ public class EraserEffect : MonoBehaviour
 
     private void Start()
     {
-        UnequipEraser();
+        UnequipEraser(ItemIdentifier.Eraser);
     }
 
 
@@ -24,14 +24,18 @@ public class EraserEffect : MonoBehaviour
         EraserItem.OnItemUnEquip.RemoveListener(UnequipEraser);
     }
 
-    void EquipEraser()
+    void EquipEraser(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Eraser) return;
+
         eraserEffect.enabled = true;
         eraserSprite.SetActive(true);
     }
 
-    void UnequipEraser()
+    void UnequipEraser(ItemIdentifier item)
     {
+        if (item != ItemIdentifier.Eraser) return;
+
         eraserEffect.enabled = false;
         eraserSprite.SetActive(false);
     }
