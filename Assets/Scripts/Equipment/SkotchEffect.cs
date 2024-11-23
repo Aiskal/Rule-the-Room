@@ -10,7 +10,7 @@ public class SkotchEffect : MonoBehaviour
 
     private void Start()
     {
-        wallJump = playerMovement.AddComponent<WallJump>();
+        wallJump = playerMovement.gameObject.AddComponent<WallJump>();
         UnequipSkotch();
         EquipSkotch();
     }
