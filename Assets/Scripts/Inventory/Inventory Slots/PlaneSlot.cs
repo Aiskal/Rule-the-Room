@@ -9,4 +9,11 @@ public class PlaneSlot : BaseInventorySlot
         base.Start();
         Identifyer = ItemIdentifier.Plane;
     }
+
+    public override void ItemClicked()
+    {
+        if (!PlaneItem.IsUnlocked) return;
+
+        base.ItemClicked();
+    }
 }

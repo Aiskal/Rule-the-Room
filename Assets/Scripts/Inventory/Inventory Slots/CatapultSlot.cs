@@ -9,4 +9,11 @@ public class CatapultSlot : BaseInventorySlot
         base.Start();
         Identifyer = ItemIdentifier.Catapults;
     }
+
+    public override void ItemClicked()
+    {
+        if (!CatapultItem.IsUnlocked) return;
+
+        base.ItemClicked();
+    }
 }

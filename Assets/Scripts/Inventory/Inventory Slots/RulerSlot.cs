@@ -9,4 +9,11 @@ public class RulerSlot : BaseInventorySlot
         base.Start();
         Identifyer = ItemIdentifier.Ruler;
     }
+
+    public override void ItemClicked()
+    {
+        if (!RulerItem.IsUnlocked) return;
+
+        base.ItemClicked();
+    }
 }

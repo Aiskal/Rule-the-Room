@@ -9,4 +9,11 @@ public class SkotchSlot : BaseInventorySlot
         base.Start();
         Identifyer = ItemIdentifier.Skotch;
     }
+
+    public override void ItemClicked()
+    {
+        if (!SkotchItem.IsUnlocked) return;
+
+        base.ItemClicked();
+    }
 }

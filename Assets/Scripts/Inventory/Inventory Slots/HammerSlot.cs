@@ -9,4 +9,11 @@ public class HammerSlot : BaseInventorySlot
         base.Start();
         Identifyer = ItemIdentifier.Hammer;
     }
+
+    public override void ItemClicked()
+    {
+        if (!HammerItem.IsUnlocked) return;
+
+        base.ItemClicked();
+    }
 }

@@ -9,4 +9,11 @@ public class PencilSlot : BaseInventorySlot
         base.Start();
         Identifyer = ItemIdentifier.Pencil;
     }
+
+    public override void ItemClicked()
+    {
+        if (!PencilItem.IsUnlocked) return;
+
+        base.ItemClicked();
+    }
 }
