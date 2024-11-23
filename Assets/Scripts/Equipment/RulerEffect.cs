@@ -60,8 +60,8 @@ public class RulerEffect : MonoBehaviour
         int playerDirection = player.PlayerDirection;
         Vector3 playerposition = player.transform.position;
 
-        int distance = 4;
-        int height = 5;
+        int distance = -50;
+        int height = -50;
 
         Vector3 spawnPosition = new Vector3(playerDirection * distance, height, 0);
 
