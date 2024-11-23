@@ -69,7 +69,7 @@ public class RulerEffect : MonoBehaviour
             rulerObject.transform.position = spawnPosition;
         }
 
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(7);
         
         EquipRuler();
 
