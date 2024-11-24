@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Search;
@@ -28,7 +29,8 @@ public class BaseInventorySlot : MonoBehaviour
         slotImageBg = childTransformBg.GetComponent<Image>();
         button = GetComponent<Button>();
 
-        UpdateButtonLock();
+        UpdateButtonLock(0);
+        ItemBase.OnItemUnlocked.AddListener(UpdateButtonLock);
     }
 
     public virtual void ItemClicked()
@@ -44,7 +46,7 @@ public class BaseInventorySlot : MonoBehaviour
     {
         return false;
     }
-    protected virtual void UpdateButtonLock()
+    protected virtual void UpdateButtonLock(ItemIdentifier item)
     {
         if (!IsUnlocked())
         {
