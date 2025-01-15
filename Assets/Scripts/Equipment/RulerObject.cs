@@ -1,18 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RulerObject : MonoBehaviour
 {
-    public int RotaDirection = 1;
-    public float baseRotation = RulerItem.SpawnRotation;
-    public float lifetime = RulerItem.TimeAlive;
+    int RotaDirection = 1;
+    float baseRotation = -220;
+    float lifetime = 6f;
+
     private Rigidbody2D rulerRb;
     private BoxCollider2D rulerCollider;
 
     bool firstCollision = true;
+    bool stopped;
     [SerializeField] PhysicsMaterial2D bounceMaterial;
+
+    public UnityEvent OnFinish { get; set; } = new();
 
     void Start()
     {
@@ -23,6 +26,7 @@ public class RulerObject : MonoBehaviour
 
     private void OnEnable()
     {
+        RotaDirection = GameSettings.PlayerObject.GetComponent<PlayerMovement>().PlayerDirection;
         gameObject.transform.rotation = Quaternion.Euler(0, 0, baseRotation * RotaDirection);
         if(rulerRb == null)
         {
@@ -34,7 +38,7 @@ public class RulerObject : MonoBehaviour
 
     void Update()
     {
-        if (rulerRb.velocity.magnitude < 0.01f)
+        if (rulerRb.velocity.magnitude < 0.01f && !stopped)
         {
             StartCoroutine(DeleteRuler());
         }
@@ -52,7 +56,7 @@ public class RulerObject : MonoBehaviour
 
     IEnumerator DeleteRuler()
     {
-        
+        stopped = true;
         yield return new WaitForSeconds(lifetime);
 
         // Désactiver le Rigidbody2D pour qu'il cesse d'interagir avec la physique
@@ -64,8 +68,9 @@ public class RulerObject : MonoBehaviour
         // Après un certain temps de vie, désactiver l'objet
         yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
-        yield return new WaitForSeconds(1);
-        rulerRb.isKinematic = false;
-        
+        OnFinish.Invoke();
+        stopped = false;
+
+
     }
 }

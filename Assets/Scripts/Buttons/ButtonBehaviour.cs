@@ -6,6 +6,6 @@ public class ButtonBehaviour : MonoBehaviour
 {
     public void OnButtonClick()
     {
-        Debug.Log("Bouton cliqué !");
+        //Debug.Log("Bouton cliqué !");
     }
 }

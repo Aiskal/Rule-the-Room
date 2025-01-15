@@ -4,20 +4,33 @@ using UnityEngine;
 
 public class PencilSlot : BaseInventorySlot
 {
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
         Identifyer = ItemIdentifier.Pencil;
+        base.Awake();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        GameSettings.PencilItem.OnItemUnlocked.AddListener(UpdateButtonLock);
+    }
+
+    private void OnDisable()
+    {
+        GameSettings.PencilItem.OnItemUnlocked.RemoveListener(UpdateButtonLock);
+
     }
 
     protected override bool IsUnlocked()
     {
-        return PencilItem.IsUnlocked;
+        return GameSettings.PencilItem.IsUnlocked;
     }
 
     public override void ItemClicked()
     {
-        if (!PencilItem.IsUnlocked) return;
+        if (!GameSettings.PencilItem.IsUnlocked) return;
 
         base.ItemClicked();
     }

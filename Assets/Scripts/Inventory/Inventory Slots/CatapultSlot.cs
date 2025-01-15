@@ -5,39 +5,34 @@ using UnityEngine;
 
 public class CatapultSlot : BaseInventorySlot
 {
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-        Identifyer = ItemIdentifier.Catapults;
+        Identifyer = ItemIdentifier.Eraser;
+        base.Awake();
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        GameSettings.CatapultItem.OnItemUnlocked.AddListener(UpdateButtonLock);
+    }
+
+    private void OnDisable()
+    {
+        GameSettings.CatapultItem.OnItemUnlocked.RemoveListener(UpdateButtonLock);
+
+    }
     public override void ItemClicked()
     {
-        if (!CatapultItem.IsUnlocked) return;
+        if (!GameSettings.CatapultItem.IsUnlocked) return;
 
         base.ItemClicked();
     }
 
     protected override bool IsUnlocked()
     {
-        return CatapultItem.IsUnlocked;
+        return GameSettings.CatapultItem.IsUnlocked;
     }
 
-    public override void UpdateDescription(GameObject description)
-    {
-        if (description == null)
-        {
-            Debug.LogError("Description GameObject est null !");
-            return;
-        }
-
-        var textTMP = description.transform.Find("Text")?.GetComponent<TextMeshProUGUI>();
-        if (textTMP == null)
-        {
-            Debug.LogError("TextMeshProUGUI introuvable dans l'objet description.");
-            return;
-        }
-
-        textTMP.text = CatapultItem.GetDescription();
-    }
 }

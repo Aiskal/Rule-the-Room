@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class RulerSlot : BaseInventorySlot
 {
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
         Identifyer = ItemIdentifier.Ruler;
+        base.Awake();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        GameSettings.RulerItem.OnItemUnlocked.AddListener(UpdateButtonLock);
+    }
+
+    private void OnDisable()
+    {
+        GameSettings.RulerItem.OnItemUnlocked.RemoveListener(UpdateButtonLock);
+
     }
 
     protected override bool IsUnlocked()
     {
-        return RulerItem.IsUnlocked;
+        return GameSettings.RulerItem.IsUnlocked;
     }
     public override void ItemClicked()
     {
-        if (!RulerItem.IsUnlocked) return;
+        if (!GameSettings.RulerItem.IsUnlocked) return;
 
         base.ItemClicked();
     }

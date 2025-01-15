@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class BaseInventorySlot : MonoBehaviour
 {
     [SerializeField] Sprite slotsprite;
-    [SerializeField] GameObject description;
 
     protected Image slotImage;
     protected Image slotImageBg;
@@ -18,19 +17,22 @@ public class BaseInventorySlot : MonoBehaviour
 
     public ItemIdentifier Identifyer { get; protected set; } = ItemIdentifier.None;
 
-    public UnityEvent<ItemIdentifier> ItemSelected { get; set; } = new();
+    public UnityEvent<ItemIdentifier> ItemSelected { get; set; }
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
+        ItemSelected = new();
         Transform childTransform = transform.Find("Object");
         slotImage = childTransform.GetComponent<Image>();
         slotImage.sprite = slotsprite;
         Transform childTransformBg = transform.Find("Image");
         slotImageBg = childTransformBg.GetComponent<Image>();
         button = GetComponent<Button>();
+    }
 
+    protected virtual void OnEnable()
+    {
         UpdateButtonLock(0);
-        ItemBase.OnItemUnlocked.AddListener(UpdateButtonLock);
     }
 
     public virtual void ItemClicked()
@@ -39,7 +41,12 @@ public class BaseInventorySlot : MonoBehaviour
         selected = !selected;
         slotImage.color = new Color(100, 255, 100);
         UpdateButtonState();
-        UpdateDescription(description);
+    }
+
+    public void Unselect()
+    {
+        selected = false;
+        UpdateButtonState();
     }
 
     protected virtual bool IsUnlocked()
@@ -79,10 +86,5 @@ public class BaseInventorySlot : MonoBehaviour
         {
             Debug.LogWarning("Aucun bouton trouvé pour gérer l'état Selected.");
         }
-    }
-
-    public virtual void UpdateDescription(GameObject description)
-    {
-
     }
 }

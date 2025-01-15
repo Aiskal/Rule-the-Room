@@ -24,7 +24,7 @@ public static class Recipes
         new Recipe( new List<ItemIdentifier>() { ItemIdentifier.Skotch }, ItemIdentifier.Skotch ),
         new Recipe( new List<ItemIdentifier>() { ItemIdentifier.Pencil, ItemIdentifier.Ruler, ItemIdentifier.Skotch }, ItemIdentifier.Plane ),
         new Recipe( new List<ItemIdentifier>() { ItemIdentifier.Pencil, ItemIdentifier.Eraser}, ItemIdentifier.Hammer ),
-        new Recipe( new List<ItemIdentifier>() { ItemIdentifier.Eraser, ItemIdentifier.Ruler }, ItemIdentifier.Catapults )
+        //new Recipe( new List<ItemIdentifier>() { ItemIdentifier.Eraser, ItemIdentifier.Ruler }, ItemIdentifier.Catapults )
     };
 
     public static ItemIdentifier TryRecipe(List<ItemIdentifier> combinaison)
@@ -52,37 +52,6 @@ public static class Recipes
     }
 
 }
-
-
-    //private static List<Type> _itemTypes; 
-
-    //public static IReadOnlyList<Type> ItemTypes
-    //{
-    //    get
-    //    {
-    //        if (_itemTypes == null)
-    //        {
-    //            _itemTypes = Assembly.GetExecutingAssembly()
-    //                .GetTypes()
-    //                .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(ItemBase)))
-    //                .ToList();
-    //        }
-    //        return _itemTypes;
-    //    }
-    //}
-
-    //public static T CreateItem<T>() where T : ItemBase
-    //{
-    //    return Activator.CreateInstance<T>();
-    //}
-
-    //public static ItemBase CreateItem(Type itemType)
-    //{
-    //    if (!itemType.IsSubclassOf(typeof(ItemBase)))
-    //        throw new ArgumentException($"Le type {itemType.Name} n'hérite pas de ItemBase");
-
-    //    return (ItemBase)Activator.CreateInstance(itemType);
-    //}
 
 
 

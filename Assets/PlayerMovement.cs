@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float m_jumpPower;
     [SerializeField] private float raycastDistance = .95f;
     //private Color rayColor = Color.red;
-    private LayerMask solLayer;
+    [SerializeField] LayerMask solLayer;
     [SerializeField] Transform m_transform;
     //[SerializeField] SpriteRenderer m_spriteRenderer;
     [SerializeField] Rigidbody2D m_rb;
@@ -25,15 +26,14 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
         m_transform = GetComponent<Transform>();
         //m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_rb = GetComponent<Rigidbody2D>();
-        solLayer = LayerMask.GetMask("Ground");
 
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -56,10 +56,19 @@ public class PlayerMovement : MonoBehaviour
         MovePlayerButton.OnStop += StopMove;
         MovePlayerButton.OnJump += HandleJump;
     }
+    public void SetDirection(bool left)
+    {
+        horizontalInput = left ? -1 : 1;
+        PlayerDirection = (int)horizontalInput;
+    }
+    public void SetDirection(int dir)
+    {
+        horizontalInput = dir;
+        if(dir != 0) PlayerDirection = (int)horizontalInput;
+    }
     private void HandleMove(bool isLeft)
     {
-        horizontalInput = isLeft ? -1 : 1;
-        PlayerDirection = (int)horizontalInput;
+        SetDirection(isLeft);
 
         Vector3 currentScale = transform.localScale;
 
@@ -76,8 +85,6 @@ public class PlayerMovement : MonoBehaviour
         // Vérifiez si le joueur est au sol avant de sauter
         if (isGrounded)
         {
-            
-            Debug.Log("Le joueur saute !");
             m_rb.velocity = new Vector2(m_rb.velocity.x, m_jumpPower);  // Applique une impulsion verticale
         }
     }
@@ -88,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.Raycast(rayOrigin, Vector3.down, raycastDistance, solLayer);
         //Debug.DrawRay(m_transform.position, Vector2.down * 0.1f, Color.red);        
     }
-    private void StopMove()
+    public void StopMove()
     {
         horizontalInput = 0;
 

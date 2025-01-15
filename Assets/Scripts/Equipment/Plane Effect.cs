@@ -22,15 +22,15 @@ public class PlaneEffect : MonoBehaviour
 
     private void OnEnable()
     {
-        PlaneItem.OnItemEquiped.AddListener(EquipPlane);
-        PlaneItem.OnItemUnEquip.AddListener(UnEquipPlane);
-        WeaponButton.OnDoAction += spawnPlane;
+        //PlaneItem.OnItemEquiped.AddListener(EquipPlane);
+        //PlaneItem.OnItemUnEquip.AddListener(UnEquipPlane);
+        //WeaponButton.OnDoAction += spawnPlane;
     }
     private void OnDisable()
     {
-        PlaneItem.OnItemEquiped.RemoveListener(EquipPlane);
-        PlaneItem.OnItemUnEquip.RemoveListener(UnEquipPlane);
-        WeaponButton.OnDoAction -= spawnPlane;
+        //PlaneItem.OnItemEquiped.RemoveListener(EquipPlane);
+        //PlaneItem.OnItemUnEquip.RemoveListener(UnEquipPlane);
+        //WeaponButton.OnDoAction -= spawnPlane;
     }
 
     void EquipPlane(ItemIdentifier item)

@@ -14,18 +14,19 @@ public class MovePlayerButton : ButtonBehaviour
     public void BS_GoDirection(bool isLeft)
     {
         OnMove?.Invoke(isLeft);
-        Debug.Log("Déplacement " + (isLeft ? "à gauche" : "à droite"));
+        //Debug.Log("Déplacement " + (isLeft ? "à gauche" : "à droite"));
     }
     
     public void BS_StopMoving()
     {
         OnStop?.Invoke();
+        //Debug.Log("stop");
     }
 
     // Méthode pour le saut
     public void BS_Jump()
     {
         OnJump?.Invoke();
-        Debug.Log("Bouton SAUT");
+        //Debug.Log("Bouton SAUT");
     }
 }

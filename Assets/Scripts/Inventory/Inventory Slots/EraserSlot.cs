@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class EraserSlot : BaseInventorySlot
 {
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
         Identifyer = ItemIdentifier.Eraser;
+        base.Awake();
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
 
+        GameSettings.EraserItem.OnItemUnlocked.AddListener(UpdateButtonLock);
+    }
+
+    private void OnDisable()
+    {
+        GameSettings.EraserItem.OnItemUnlocked.RemoveListener(UpdateButtonLock);
+
+    }
 
     public override void ItemClicked()
     {
-        if (!EraserItem.IsUnlocked) return;
+        if (!GameSettings.EraserItem.IsUnlocked) return;
 
         base.ItemClicked();
     }
 
     protected override bool IsUnlocked()
     {
-        return EraserItem.IsUnlocked;
+        return GameSettings.EraserItem.IsUnlocked;
     }
 }

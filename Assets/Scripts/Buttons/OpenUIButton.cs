@@ -25,7 +25,7 @@ public class OpenUIButton : ButtonBehaviour
         }
         else
         {
-            Debug.LogWarning("Aucun Canvas d'inventaire assigné !");
+            //Debug.LogWarning("Aucun Canvas d'inventaire assigné !");
         }
     }
 
@@ -33,7 +33,7 @@ public class OpenUIButton : ButtonBehaviour
     {
         if (buttonImage == null)
         {
-            Debug.LogWarning("Aucune image associée au bouton !");
+            //Debug.LogWarning("Aucune image associée au bouton !");
             return;
         }
 

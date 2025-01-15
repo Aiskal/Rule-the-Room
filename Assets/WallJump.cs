@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
-public class WallJumpa : MonoBehaviour
+public class WallJump : MonoBehaviour
 {
     PlayerMovement m_playerMovement;
     private Rigidbody2D m_rb;
@@ -25,15 +26,15 @@ public class WallJumpa : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != 7) return;
+        if (!enabled || collision.gameObject.layer != 7) return;
         
+        m_direction = m_playerMovement.PlayerDirection;
         LockPlayer();
 
         MovePlayerButton.OnMove += HandleMove;
         MovePlayerButton.OnStop += StopMove;
         MovePlayerButton.OnJump += HandleJump;
 
-        m_direction = m_playerMovement.PlayerDirection;
         //if(m_Coroutine == null)
         //{
         //    m_Coroutine = StartCoroutine(StickCoroutine());
@@ -42,9 +43,7 @@ public class WallJumpa : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != 7) return;
-
-        UnlockPlayer();
+        if (!enabled || collision.gameObject.layer != 7) return;
 
         MovePlayerButton.OnMove -= HandleMove;
         MovePlayerButton.OnStop -= StopMove;
@@ -57,6 +56,7 @@ public class WallJumpa : MonoBehaviour
     void LockPlayer()
     {
         m_rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        m_playerMovement.StopMove();
         m_playerMovement.enabled = false;
     }
 
@@ -64,6 +64,7 @@ public class WallJumpa : MonoBehaviour
     {
         m_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         m_playerMovement.enabled = true;
+        //m_playerMovement.HandleMove();
     }
 
 
@@ -86,16 +87,26 @@ public class WallJumpa : MonoBehaviour
     }
     private void HandleJump()
     {
-        UnlockPlayer();
+        UnlockPlayer(); 
+        m_playerMovement.SetDirection((int)-m_direction);
+        m_playerMovement.StopMove();
 
-        float escapeVelocity = m_direction < 0 ? -0.75f : 0.75f;
+        // flip sprites
+        Vector3 currentScale = transform.localScale;
+        if (-m_direction == -1 && currentScale.x > 0) currentScale.x = -Mathf.Abs(currentScale.x);
+        else if (m_direction == 1 && currentScale.x < 0) currentScale.x = Mathf.Abs(currentScale.x);
+        transform.localScale = currentScale;
 
-        m_rb.velocity = new Vector2(m_rb.velocity.x + 0-escapeVelocity * m_jumpPower, m_jumpPower);
+
+
+        float escapeVelocity = m_direction < 0 ? -0.4f : 0.4f;
+
+        m_rb.velocity = new Vector2(m_rb.velocity.x + 0-escapeVelocity * m_jumpPower, m_jumpPower/1.5f);
         m_tempHorizontalInput = -m_direction;
         Debug.Log("WALLJUMP");
     }
 
-    private void StopMove()
+    public void StopMove()
     {
         m_animator.SetBool("moving", false);
     }

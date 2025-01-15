@@ -4,20 +4,33 @@ using UnityEngine;
 
 public class SkotchSlot : BaseInventorySlot
 {
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
         Identifyer = ItemIdentifier.Skotch;
+        base.Awake();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        GameSettings.SkotchItem.OnItemUnlocked.AddListener(UpdateButtonLock);
+    }
+
+    private void OnDisable()
+    {
+        GameSettings.SkotchItem.OnItemUnlocked.RemoveListener(UpdateButtonLock);
+
     }
 
     protected override bool IsUnlocked()
     {
-        return SkotchItem.IsUnlocked;
+        return GameSettings.SkotchItem.IsUnlocked;
     }
 
     public override void ItemClicked()
     {
-        if (!SkotchItem.IsUnlocked) return;
+        if (!GameSettings.SkotchItem.IsUnlocked) return;
 
         base.ItemClicked();
     }

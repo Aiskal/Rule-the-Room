@@ -22,14 +22,14 @@ public class RulerEffect : MonoBehaviour
 
     private void OnEnable()
     {
-        RulerItem.OnItemEquiped.AddListener(EquipRuler);
-        RulerItem.OnItemUnEquip.AddListener(UnEquipRuler);
-        WeaponButton.OnDoAction += spawnRuler;
+        //RulerItem.OnItemEquiped.AddListener(EquipRuler);
+        //RulerItem.OnItemUnEquip.AddListener(UnEquipRuler);
+        //WeaponButton.OnDoAction += spawnRuler;
     }
     private void OnDisable()
     {
-        RulerItem.OnItemEquiped.RemoveListener(EquipRuler);
-        RulerItem.OnItemUnEquip.RemoveListener(UnEquipRuler);
+        //RulerItem.OnItemEquiped.RemoveListener(EquipRuler);
+        //RulerItem.OnItemUnEquip.RemoveListener(UnEquipRuler);
     }
 
     void EquipRuler(ItemIdentifier item)

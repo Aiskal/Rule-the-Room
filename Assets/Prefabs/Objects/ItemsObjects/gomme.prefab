@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6714833607248614586}
   - component: {fileID: 1435317785359256037}
+  - component: {fileID: -5827882606404028758}
+  - component: {fileID: -2910689562616567164}
   m_Layer: 0
   m_Name: gomme
   m_TagString: Untagged
@@ -84,3 +86,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5827882606404028758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833551377482802470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac8cbea6c29a2046a21a192e6d73330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eraserEffect: {fileID: -2910689562616567164}
+--- !u!114 &-2910689562616567164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833551377482802470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec675c20551082242a89e02e79bb15a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Material: {fileID: 6200000, guid: f7905c0a2ef3aea45b07fff67a4aabb3, type: 2}
+  Collider: {fileID: 0}
