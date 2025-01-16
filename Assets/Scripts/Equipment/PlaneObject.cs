@@ -1,14 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlaneObject : MonoBehaviour
 {
-    public int RotaDirection;
-    //public float baseRotation;
+
+    [SerializeField] GameObject killZone1, killZone2;
+    int RotaDirection;
     private float speed;
     private float fadeSpeed;
     //Coroutine planeCoroutine=StartCoroutine(DestroyCoroutine());  
@@ -26,40 +23,60 @@ public class PlaneObject : MonoBehaviour
         m_material = GetComponent<Renderer>().material;
 
         RotaDirection = -1;
-        //baseRotation = PlaneItem.SpawnRotation;
         speed = PlaneItem.FlightSpeed;
         fadeSpeed = PlaneItem.FadeTime;
 
-}
+        gameObject.SetActive(false);
+        killZone1.SetActive(false); 
+        killZone2.SetActive(false);
 
-    void FixedUpdate()
+    }
+
+    void Update()
     {
-        m_transform.position += new Vector3(1 * speed * Time.fixedDeltaTime, 0, 0);
+        m_transform.position += new Vector3(RotaDirection * speed * Time.fixedDeltaTime, 0, 0);
     }
     private void OnEnable()
     {
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, RotaDirection);
-        if (planeRb == null)
-        {
-            planeRb = GetComponent<Rigidbody2D>();
-        }
+        RotaDirection = GameSettings.PlayerObject.GetComponent<PlayerMovement>().PlayerDirection;
+
+        Vector3 currentScale = transform.localScale;
+        if (RotaDirection == 1 && currentScale.x > 0) currentScale.x = -Mathf.Abs(currentScale.x);
+        else if (RotaDirection != 1 && currentScale.x < 0) currentScale.x = Mathf.Abs(currentScale.x);
+        transform.localScale = currentScale;
+
+        killZone1.SetActive(true);
+        killZone2.SetActive(true);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnDisable()
     {
-        if (collision.CompareTag("Player"))
+        GameSettings.PlaneItem.ReleaseItem();
+
+        killZone1.SetActive(false);
+        killZone2.SetActive(false);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
         {
             collision.transform.SetParent(this.transform);
-
         }
+        else if (collision.collider.CompareTag("KillZone"))
+        {
+            Debug.Log("KillZone");
+            gameObject.SetActive(false);
+        }
+
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-            if (collision.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
             collision.transform.SetParent(null);
+            StartCoroutine(DestroyCoroutine());
         }
-        
-        StartCoroutine(DestroyCoroutine());
+
     }
 
 
@@ -70,23 +87,19 @@ public class PlaneObject : MonoBehaviour
         if (m_material != null)
         {
            
-            Color currentColor = m_material.color;
+            Color baseColor = m_material.color;
+            float elapsedTime = 0f, time = PlaneItem.FadeTime;
 
-           
-            while (currentColor.a > 0)
+            while (elapsedTime < time)
             {
-                
-                currentColor.a -= fadeSpeed-1 * Time.deltaTime;
-                
-                currentColor.a = Mathf.Max(currentColor.a, 0);
-                
-                m_material.color = currentColor;
-
-                
+                elapsedTime += Time.deltaTime;
+                var progress = elapsedTime / time;
+                m_material.color = Color.Lerp(baseColor, new Color(1, 1, 1, 0), progress);
                 yield return null;
             }
         }
-      
-        Destroy(gameObject);     
+
+        gameObject.SetActive(false);    
+        m_material.color = Color.white;
     }
 }

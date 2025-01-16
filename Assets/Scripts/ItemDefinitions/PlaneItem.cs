@@ -3,8 +3,11 @@ using UnityEngine.Events;
 
 public class PlaneItem : MonoBehaviour,  IItemBase
 {
-    
-    public static float FlightSpeed { get; } = 4;
+    [SerializeField] Transform spawnPoint;
+    [SerializeField] PlaneObject plane;
+    SpriteRenderer spriteRenderer;
+    bool locked;
+    public static float FlightSpeed { get; } = 0.3f;
 
     public static float FadeTime { get; } = 1f;
 
@@ -22,6 +25,7 @@ public class PlaneItem : MonoBehaviour,  IItemBase
         //OnItemUnEquip = new();
 
         UnequipItem();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void OnEnable()
     {
@@ -44,6 +48,8 @@ public class PlaneItem : MonoBehaviour,  IItemBase
     {
         Debug.Log("Equip Plane");
         gameObject.SetActive(true);
+        GameSettings.ActiveItem = this;
+
 
 
     }
@@ -57,7 +63,22 @@ public class PlaneItem : MonoBehaviour,  IItemBase
 
     public void UseItem()
     {
+        if (locked) return;
         Debug.Log("Use Plane");
+        plane.transform.position = spawnPoint.position;
+        plane.gameObject.SetActive(true);
+        LockItem();
+    }
+
+    void LockItem()
+    {
+        locked = true;
+        spriteRenderer.enabled = false;
+    }
+    public void ReleaseItem()
+    {
+        locked = false;
+        spriteRenderer.enabled = true;
     }
 
     public void Unlock()

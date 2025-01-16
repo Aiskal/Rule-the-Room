@@ -52,6 +52,7 @@ public class RulerItem : MonoBehaviour, IItemBase
     {
         Debug.Log("Equip Ruler");
         gameObject.SetActive(true);
+        GameSettings.ActiveItem = this;
 
 
     }

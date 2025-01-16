@@ -7,11 +7,11 @@ public class ItemDrop : MonoBehaviour
     [SerializeField] ItemIdentifier m_item;
     [SerializeField] SpriteRenderer m_spriteRenderer;
 
-    public float verticalMovementSpeed = 10000.0f;
-    public float verticalMovementAmplitude = 0.1f;
-    public float highlightDuration = 0.5f;
-    public float highlightScaleAmount = 1.2f;
-    public float highlightRotationAmount = 15.0f;
+    float verticalMovementSpeed = 1.0f;
+    float verticalMovementAmplitude = 0.45f;
+    float highlightDuration = 0.5f;
+    float highlightScaleAmount = 1.2f;
+    float highlightRotationAmount = 15.0f;
 
     private Vector3 initialPosition;
     private Vector3 initialScale;

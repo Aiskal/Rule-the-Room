@@ -35,7 +35,7 @@ public class CatapultItem : MonoBehaviour, IItemBase
     {
         Debug.Log("Equip Catapult");
         gameObject.SetActive(true);
-
+        GameSettings.ActiveItem = this;
 
     }
 

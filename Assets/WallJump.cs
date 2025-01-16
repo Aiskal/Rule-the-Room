@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class WallJump : MonoBehaviour
 {
@@ -17,17 +13,31 @@ public class WallJump : MonoBehaviour
     [SerializeField] float m_jumpPower = 10f;
     private float m_tempHorizontalInput;
 
+    bool active;
     private void OnEnable()
     {
+        Debug.Log("Enable");
         m_rb = GetComponent<Rigidbody2D>();
         m_playerMovement = GetComponent<PlayerMovement>();
         m_animator = GetComponent<Animator>();
     }
 
+    private void OnDisable()
+    {
+        if (active)
+        {
+            this.enabled = true;
+            MovePlayerButton.OnMove += HandleMove;
+            MovePlayerButton.OnStop += StopMove;
+            MovePlayerButton.OnJump += HandleJump;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!enabled || collision.gameObject.layer != 7) return;
-        
+        active = true;
+        Debug.Log("Enter");
         m_direction = m_playerMovement.PlayerDirection;
         LockPlayer();
 
@@ -44,14 +54,17 @@ public class WallJump : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (!enabled || collision.gameObject.layer != 7) return;
+        active = false;
+        UnlockPlayer();
 
+        Debug.Log("Exit");
         MovePlayerButton.OnMove -= HandleMove;
         MovePlayerButton.OnStop -= StopMove;
         MovePlayerButton.OnJump -= HandleJump;
     }
 
 
-   
+
 
     void LockPlayer()
     {
@@ -94,7 +107,7 @@ public class WallJump : MonoBehaviour
         // flip sprites
         Vector3 currentScale = transform.localScale;
         if (-m_direction == -1 && currentScale.x > 0) currentScale.x = -Mathf.Abs(currentScale.x);
-        else if (m_direction == 1 && currentScale.x < 0) currentScale.x = Mathf.Abs(currentScale.x);
+        else if (-m_direction == 1 && currentScale.x < 0) currentScale.x = Mathf.Abs(currentScale.x);
         transform.localScale = currentScale;
 
 

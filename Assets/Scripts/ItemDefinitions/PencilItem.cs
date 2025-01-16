@@ -34,14 +34,16 @@ public class PencilItem : MonoBehaviour, IItemBase
     {
         Debug.Log("Equip Pencil");
         gameObject.SetActive(true);
-        OnItemEquiped.Invoke(Identity);
+        //OnItemEquiped.Invoke(Identity);
+        GameSettings.ActiveItem = this;
+
     }
 
     public void UnequipItem()
     {
         Debug.Log("Unequip Pencil");
         gameObject.SetActive(false);
-        OnItemUnEquip.Invoke(Identity);
+        //OnItemUnEquip.Invoke(Identity);
     }
 
     public void UseItem()

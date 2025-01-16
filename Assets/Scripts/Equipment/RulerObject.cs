@@ -21,6 +21,7 @@ public class RulerObject : MonoBehaviour
     {
         rulerRb = GetComponent<Rigidbody2D>();
         rulerCollider = GetComponent<BoxCollider2D>();
+        gameObject.SetActive(false);
         //definir position par rapport au transform du joueur
     }
 

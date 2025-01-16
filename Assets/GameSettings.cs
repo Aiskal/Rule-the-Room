@@ -8,7 +8,8 @@ public class GameSettings : SingletonMB<GameSettings>
         Quitting = true;
     }
 
-    
+    IItemBase activeItem { get; set; }
+    public static IItemBase ActiveItem { get => Instance.activeItem; set => Instance.activeItem = value; }  
 
     static GameSettings instance;
     public bool drawGizmos = true;

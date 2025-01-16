@@ -49,6 +49,8 @@ public class HammerItem : MonoBehaviour, IItemBase
     {
         Debug.Log("Equip Hammer");
         gameObject.SetActive(true);
+        GameSettings.ActiveItem = this;
+
     }
 
     public void UnequipItem()

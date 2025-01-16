@@ -38,6 +38,8 @@ public class EraserItem : MonoBehaviour, IItemBase
         Debug.Log("Equip Eraser");
         eraserEffect.enabled = true;
         gameObject.SetActive(true);
+        GameSettings.ActiveItem = this;
+
 
     }
 

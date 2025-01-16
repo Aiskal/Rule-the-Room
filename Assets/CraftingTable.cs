@@ -24,8 +24,8 @@ public class CraftingTable : MonoBehaviour
         validResult = ItemIdentifier.None;
         craftingContent = new();
         CraftButton.interactable = false;
+        TryRecipe();
 
-        SetState(CraftState.Default);
     }
 
     private void OnDisable()
@@ -79,7 +79,8 @@ public class CraftingTable : MonoBehaviour
         switch (result)
         {
             case ItemIdentifier.None: InvalidRecipe(); break;
-            default: ValidRecipe(result); break;
+            default: 
+                ValidRecipe(result); break;
         }
     }
 

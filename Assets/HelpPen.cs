@@ -35,8 +35,8 @@ public class HelpPen : MonoBehaviour
 
     private void OnDisable()
     {
-        GameSettings.PencilItem.OnItemEquiped.RemoveListener(Activate);
-        GameSettings.PencilItem.OnItemUnEquip.RemoveListener(Deactivate);
+        GameSettings.PencilItem?.OnItemEquiped.RemoveListener(Activate);
+        GameSettings.PencilItem?.OnItemUnEquip.RemoveListener(Deactivate);
     }
 
     void Activate(ItemIdentifier _)
@@ -65,6 +65,7 @@ public class HelpPen : MonoBehaviour
             yield return null;
         }
         this.enabled = false;
+        collider.enabled = false;
     }
 
 }

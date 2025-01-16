@@ -47,6 +47,8 @@ public class SkotchItem : MonoBehaviour, IItemBase
         Debug.Log("Equip Scotch");
         gameObject.SetActive(true);
         wallJump.enabled = true;
+        GameSettings.ActiveItem = this;
+
     }
 
     public void UnequipItem()

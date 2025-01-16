@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -71,10 +66,8 @@ public class PlayerMovement : MonoBehaviour
         SetDirection(isLeft);
 
         Vector3 currentScale = transform.localScale;
-
         if (isLeft && currentScale.x > 0) currentScale.x = -Mathf.Abs(currentScale.x);
         else if (!isLeft && currentScale.x < 0) currentScale.x = Mathf.Abs(currentScale.x);
-
         transform.localScale = currentScale;
 
         animator.SetBool("moving", true);
