@@ -43,7 +43,7 @@ public class PencilItem : MonoBehaviour, IItemBase
     {
         Debug.Log("Unequip Pencil");
         gameObject.SetActive(false);
-        //OnItemUnEquip.Invoke(Identity);
+        OnItemUnEquip.Invoke(Identity);
     }
 
     public void UseItem()

@@ -23,7 +23,7 @@ public class PlaneObject : MonoBehaviour
         m_material = GetComponent<Renderer>().material;
 
         RotaDirection = -1;
-        speed = PlaneItem.FlightSpeed;
+        speed = 1.8f;
         fadeSpeed = PlaneItem.FadeTime;
 
         gameObject.SetActive(false);
@@ -34,7 +34,7 @@ public class PlaneObject : MonoBehaviour
 
     void Update()
     {
-        m_transform.position += new Vector3(RotaDirection * speed * Time.fixedDeltaTime, 0, 0);
+        m_transform.position += new Vector3(RotaDirection * speed * Time.deltaTime, 0, 0);
     }
     private void OnEnable()
     {
@@ -98,7 +98,7 @@ public class PlaneObject : MonoBehaviour
                 yield return null;
             }
         }
-
+        GameSettings.PlayerObject.transform.SetParent(null);
         gameObject.SetActive(false);    
         m_material.color = Color.white;
     }

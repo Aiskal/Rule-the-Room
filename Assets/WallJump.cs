@@ -10,7 +10,7 @@ public class WallJump : MonoBehaviour
     private int m_horizontalInput;
     private int m_PlayerDirection;
     private Animator m_animator;
-    [SerializeField] float m_jumpPower = 10f;
+    [SerializeField] float m_jumpPower = 5f;
     private float m_tempHorizontalInput;
 
     bool active;
@@ -69,6 +69,7 @@ public class WallJump : MonoBehaviour
     void LockPlayer()
     {
         m_rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        m_rb.velocity = Vector3.zero;
         m_playerMovement.StopMove();
         m_playerMovement.enabled = false;
     }
@@ -100,6 +101,7 @@ public class WallJump : MonoBehaviour
     }
     private void HandleJump()
     {
+        if (!active) return;
         UnlockPlayer(); 
         m_playerMovement.SetDirection((int)-m_direction);
         m_playerMovement.StopMove();

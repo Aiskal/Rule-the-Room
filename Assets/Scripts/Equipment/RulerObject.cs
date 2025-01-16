@@ -6,7 +6,7 @@ public class RulerObject : MonoBehaviour
 {
     int RotaDirection = 1;
     float baseRotation = -220;
-    float lifetime = 6f;
+    float lifetime = 3f;
 
     private Rigidbody2D rulerRb;
     private BoxCollider2D rulerCollider;
